@@ -162,6 +162,7 @@
             this.Controls.Add(this.productIDComboBox);
             this.Controls.Add(saleDateLabel);
             this.Controls.Add(this.saleDateDateTimePicker);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNewSaleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

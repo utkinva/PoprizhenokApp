@@ -48,7 +48,6 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.iNNTextBox = new System.Windows.Forms.TextBox();
             this.kPPTextBox = new System.Windows.Forms.TextBox();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.priorityNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.titleTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +63,7 @@
             this.productSaleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.deleteSaleBtn = new System.Windows.Forms.Button();
             this.addSaleBtn = new System.Windows.Forms.Button();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             addressLabel = new System.Windows.Forms.Label();
             agentTypeIDLabel = new System.Windows.Forms.Label();
             directorNameLabel = new System.Windows.Forms.Label();
@@ -76,11 +76,11 @@
             titleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.agentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesHistoryDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSaleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // addressLabel
@@ -251,17 +251,6 @@
             this.kPPTextBox.Size = new System.Drawing.Size(242, 37);
             this.kPPTextBox.TabIndex = 3;
             // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.agentBindingSource, "Logo", true));
-            this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.picture;
-            this.logoPictureBox.Location = new System.Drawing.Point(536, 66);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(300, 300);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPictureBox.TabIndex = 14;
-            this.logoPictureBox.TabStop = false;
-            // 
             // phoneMaskedTextBox
             // 
             this.phoneMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "Phone", true));
@@ -310,7 +299,7 @@
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.saveBtn.ForeColor = System.Drawing.Color.Black;
-            this.saveBtn.Location = new System.Drawing.Point(12, 519);
+            this.saveBtn.Location = new System.Drawing.Point(12, 556);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(198, 39);
             this.saveBtn.TabIndex = 9;
@@ -324,7 +313,7 @@
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cancelBtn.ForeColor = System.Drawing.Color.Black;
-            this.cancelBtn.Location = new System.Drawing.Point(628, 519);
+            this.cancelBtn.Location = new System.Drawing.Point(1076, 556);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(208, 39);
             this.cancelBtn.TabIndex = 10;
@@ -338,7 +327,7 @@
             this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.deleteBtn.ForeColor = System.Drawing.Color.Black;
-            this.deleteBtn.Location = new System.Drawing.Point(414, 519);
+            this.deleteBtn.Location = new System.Drawing.Point(842, 556);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(208, 39);
             this.deleteBtn.TabIndex = 10;
@@ -434,13 +423,26 @@
             this.addSaleBtn.UseVisualStyleBackColor = false;
             this.addSaleBtn.Click += new System.EventHandler(this.addSaleBtn_Click);
             // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.agentBindingSource, "Logo", true));
+            this.logoPictureBox.ErrorImage = global::PoprizhenokApp.Properties.Resources.picture;
+            this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.picture;
+            this.logoPictureBox.InitialImage = global::PoprizhenokApp.Properties.Resources.picture;
+            this.logoPictureBox.Location = new System.Drawing.Point(536, 66);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(300, 300);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 28;
+            this.logoPictureBox.TabStop = false;
+            // 
             // AddEditAgentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1296, 593);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1304, 615);
+            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.salesHistoryDGV);
             this.Controls.Add(this.addSaleBtn);
             this.Controls.Add(this.deleteSaleBtn);
@@ -461,14 +463,15 @@
             this.Controls.Add(kPPLabel);
             this.Controls.Add(this.kPPTextBox);
             this.Controls.Add(logoLabel);
-            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(phoneLabel);
             this.Controls.Add(this.phoneMaskedTextBox);
             this.Controls.Add(priorityLabel);
             this.Controls.Add(this.priorityNumericUpDown);
             this.Controls.Add(titleLabel);
             this.Controls.Add(this.titleTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(864, 609);
             this.Name = "AddEditAgentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -476,11 +479,11 @@
             this.Load += new System.EventHandler(this.AddEditAgentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.agentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesHistoryDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productSaleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,7 +498,6 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.TextBox iNNTextBox;
         private System.Windows.Forms.TextBox kPPTextBox;
-        private System.Windows.Forms.PictureBox logoPictureBox;
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
         private System.Windows.Forms.NumericUpDown priorityNumericUpDown;
         private System.Windows.Forms.TextBox titleTextBox;
@@ -512,5 +514,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productCountDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button deleteSaleBtn;
         private System.Windows.Forms.Button addSaleBtn;
+        private System.Windows.Forms.PictureBox logoPictureBox;
     }
 }

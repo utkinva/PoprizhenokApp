@@ -99,6 +99,7 @@
             this.Controls.Add(priorityLabel);
             this.Controls.Add(this.priorityNumericUpDown);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePriorityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

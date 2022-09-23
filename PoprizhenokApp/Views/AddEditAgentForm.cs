@@ -26,7 +26,10 @@ namespace PoprizhenokApp.Views
             }
             else
             {
-                agent = null;
+                agent = new Agent()
+                {
+                    Logo = @"..\..\Resources\picture.png"
+                };
             }
 
             priorityNumericUpDown.Maximum = Int32.MaxValue;
@@ -36,17 +39,28 @@ namespace PoprizhenokApp.Views
 
         private void AddEditAgentForm_Load(object sender, EventArgs e)
         {
+
             if (agent != null)
             {
+                if (agent.Logo == null)
+                {
+                    logoPictureBox.ImageLocation = @"..\..\Resources\picture.png";
+                }
+                else
+                {
+                    logoPictureBox.ImageLocation = agent.Logo;
+                }
                 agentBindingSource.Add(agent);
                 productBindingSource.DataSource = DBContext.Context.Product.ToList();
-                logoPictureBox.ImageLocation = agent.Logo;
+
                 GetSalesHistory();
             }
             else
             {
                 agentBindingSource.AddNew();
             }
+
+
 
 
         }

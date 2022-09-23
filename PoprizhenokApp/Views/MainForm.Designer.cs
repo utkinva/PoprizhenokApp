@@ -31,21 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ascDescCheck = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.filterComboBox = new System.Windows.Forms.ComboBox();
             this.agentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sortComboBox = new System.Windows.Forms.ComboBox();
+            this.ascDescCheck = new System.Windows.Forms.CheckBox();
             this.searchTxtBox = new System.Windows.Forms.TextBox();
+            this.sortComboBox = new System.Windows.Forms.ComboBox();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.changePriorityBtn = new System.Windows.Forms.Button();
             this.addAgentBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.agentsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,10 +57,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(150)))), ((int)(((byte)(158)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.ascDescCheck);
-            this.panel1.Controls.Add(this.filterComboBox);
-            this.panel1.Controls.Add(this.sortComboBox);
-            this.panel1.Controls.Add(this.searchTxtBox);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.logoPictureBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -64,17 +65,17 @@
             this.panel1.Size = new System.Drawing.Size(1220, 150);
             this.panel1.TabIndex = 0;
             // 
-            // ascDescCheck
+            // panel4
             // 
-            this.ascDescCheck.AutoSize = true;
-            this.ascDescCheck.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ascDescCheck.Location = new System.Drawing.Point(758, 106);
-            this.ascDescCheck.Name = "ascDescCheck";
-            this.ascDescCheck.Size = new System.Drawing.Size(196, 37);
-            this.ascDescCheck.TabIndex = 1;
-            this.ascDescCheck.Text = "По убыванию";
-            this.ascDescCheck.UseVisualStyleBackColor = true;
-            this.ascDescCheck.CheckedChanged += new System.EventHandler(this.ascDescCheck_CheckedChanged);
+            this.panel4.Controls.Add(this.filterComboBox);
+            this.panel4.Controls.Add(this.ascDescCheck);
+            this.panel4.Controls.Add(this.searchTxtBox);
+            this.panel4.Controls.Add(this.sortComboBox);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(152, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1066, 148);
+            this.panel4.TabIndex = 4;
             // 
             // filterComboBox
             // 
@@ -84,9 +85,9 @@
             this.filterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterComboBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.filterComboBox.FormattingEnabled = true;
-            this.filterComboBox.Location = new System.Drawing.Point(960, 105);
+            this.filterComboBox.Location = new System.Drawing.Point(797, 106);
             this.filterComboBox.Name = "filterComboBox";
-            this.filterComboBox.Size = new System.Drawing.Size(247, 37);
+            this.filterComboBox.Size = new System.Drawing.Size(258, 37);
             this.filterComboBox.TabIndex = 2;
             this.filterComboBox.ValueMember = "ID";
             this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
@@ -94,6 +95,30 @@
             // agentTypeBindingSource
             // 
             this.agentTypeBindingSource.DataSource = typeof(PoprizhenokApp.Models.AgentType);
+            // 
+            // ascDescCheck
+            // 
+            this.ascDescCheck.AutoSize = true;
+            this.ascDescCheck.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ascDescCheck.Location = new System.Drawing.Point(617, 112);
+            this.ascDescCheck.Name = "ascDescCheck";
+            this.ascDescCheck.Size = new System.Drawing.Size(174, 33);
+            this.ascDescCheck.TabIndex = 1;
+            this.ascDescCheck.Text = "По убыванию";
+            this.ascDescCheck.UseVisualStyleBackColor = true;
+            this.ascDescCheck.CheckedChanged += new System.EventHandler(this.ascDescCheck_CheckedChanged);
+            // 
+            // searchTxtBox
+            // 
+            this.searchTxtBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.searchTxtBox.Location = new System.Drawing.Point(8, 107);
+            this.searchTxtBox.Name = "searchTxtBox";
+            this.searchTxtBox.Size = new System.Drawing.Size(350, 37);
+            this.searchTxtBox.TabIndex = 3;
+            this.searchTxtBox.Text = "Введите для поиска";
+            this.searchTxtBox.TextChanged += new System.EventHandler(this.searchTxtBox_TextChanged);
+            this.searchTxtBox.Enter += new System.EventHandler(this.searchTxtBox_Enter);
+            this.searchTxtBox.Leave += new System.EventHandler(this.searchTxtBox_Leave);
             // 
             // sortComboBox
             // 
@@ -106,28 +131,18 @@
             "Наименование",
             "Размер скидки",
             "Приоритет"});
-            this.sortComboBox.Location = new System.Drawing.Point(505, 105);
+            this.sortComboBox.Location = new System.Drawing.Point(364, 106);
             this.sortComboBox.Name = "sortComboBox";
             this.sortComboBox.Size = new System.Drawing.Size(247, 37);
             this.sortComboBox.TabIndex = 0;
             this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.sortComboBox_SelectedIndexChanged);
             // 
-            // searchTxtBox
-            // 
-            this.searchTxtBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.searchTxtBox.Location = new System.Drawing.Point(149, 106);
-            this.searchTxtBox.Name = "searchTxtBox";
-            this.searchTxtBox.Size = new System.Drawing.Size(350, 37);
-            this.searchTxtBox.TabIndex = 3;
-            this.searchTxtBox.Text = "Введите для поиска";
-            this.searchTxtBox.TextChanged += new System.EventHandler(this.searchTxtBox_TextChanged);
-            this.searchTxtBox.Enter += new System.EventHandler(this.searchTxtBox_Enter);
-            this.searchTxtBox.Leave += new System.EventHandler(this.searchTxtBox_Leave);
-            // 
             // logoPictureBox
             // 
             this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.Попрыженок;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.logoPictureBox.MaximumSize = new System.Drawing.Size(140, 140);
+            this.logoPictureBox.MinimumSize = new System.Drawing.Size(140, 140);
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.Size = new System.Drawing.Size(140, 140);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -138,7 +153,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(150)))), ((int)(((byte)(158)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.changePriorityBtn);
+            this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.addAgentBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 695);
@@ -146,13 +161,22 @@
             this.panel2.Size = new System.Drawing.Size(1220, 52);
             this.panel2.TabIndex = 1;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.changePriorityBtn);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel5.Location = new System.Drawing.Point(895, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(323, 50);
+            this.panel5.TabIndex = 6;
+            // 
             // changePriorityBtn
             // 
             this.changePriorityBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(220)))), ((int)(((byte)(254)))));
             this.changePriorityBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changePriorityBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changePriorityBtn.ForeColor = System.Drawing.Color.Black;
-            this.changePriorityBtn.Location = new System.Drawing.Point(907, 5);
+            this.changePriorityBtn.Location = new System.Drawing.Point(12, 8);
             this.changePriorityBtn.Name = "changePriorityBtn";
             this.changePriorityBtn.Size = new System.Drawing.Size(300, 39);
             this.changePriorityBtn.TabIndex = 5;
@@ -207,10 +231,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Попрыженок";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -230,6 +256,8 @@
         private System.Windows.Forms.BindingSource agentTypeBindingSource;
         private System.Windows.Forms.Button addAgentBtn;
         private System.Windows.Forms.Button changePriorityBtn;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 
