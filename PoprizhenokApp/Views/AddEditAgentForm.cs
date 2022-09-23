@@ -30,6 +30,8 @@ namespace PoprizhenokApp.Views
                 {
                     Logo = @"..\..\Resources\picture.png"
                 };
+                addSaleBtn.Enabled = false;
+                deleteSaleBtn.Enabled = false;
             }
 
             priorityNumericUpDown.Maximum = Int32.MaxValue;
@@ -50,6 +52,7 @@ namespace PoprizhenokApp.Views
                 {
                     logoPictureBox.ImageLocation = agent.Logo;
                 }
+
                 agentBindingSource.Add(agent);
                 productBindingSource.DataSource = DBContext.Context.Product.ToList();
 
@@ -57,6 +60,7 @@ namespace PoprizhenokApp.Views
             }
             else
             {
+
                 agentBindingSource.AddNew();
             }
 
