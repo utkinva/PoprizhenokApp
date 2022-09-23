@@ -439,7 +439,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1296, 570);
+            this.ClientSize = new System.Drawing.Size(1296, 593);
             this.ControlBox = false;
             this.Controls.Add(this.salesHistoryDGV);
             this.Controls.Add(this.addSaleBtn);
@@ -472,7 +472,7 @@
             this.MinimumSize = new System.Drawing.Size(864, 609);
             this.Name = "AddEditAgentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Добавить/Изменить агента";
+            this.Text = "Попрыженок";
             this.Load += new System.EventHandler(this.AddEditAgentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.agentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();

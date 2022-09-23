@@ -165,7 +165,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNewSaleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Новая запись";
+            this.Text = "Попрыженок";
             this.Load += new System.EventHandler(this.AddNewSaleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productSaleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productCountNumericUpDown)).EndInit();

@@ -102,7 +102,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChangePriorityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Изменить приоритет на...";
+            this.Text = "Попрыженок";
             this.Load += new System.EventHandler(this.ChangePriorityForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.priorityNumericUpDown)).EndInit();
             this.ResumeLayout(false);

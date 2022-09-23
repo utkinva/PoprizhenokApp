@@ -23,12 +23,10 @@ namespace PoprizhenokApp.Views
             if (current != null)
             {
                 agent = current;
-                this.Text = "Редактировать агента";
             }
             else
             {
                 agent = null;
-                this.Text = "Добавление агента";
             }
 
             priorityNumericUpDown.Maximum = Int32.MaxValue;
