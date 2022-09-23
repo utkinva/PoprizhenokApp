@@ -46,8 +46,6 @@
             this.agentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.directorNameTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.iNNTextBox = new System.Windows.Forms.TextBox();
-            this.kPPTextBox = new System.Windows.Forms.TextBox();
             this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.priorityNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.titleTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +62,8 @@
             this.deleteSaleBtn = new System.Windows.Forms.Button();
             this.addSaleBtn = new System.Windows.Forms.Button();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.iNNMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.kPPMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             addressLabel = new System.Windows.Forms.Label();
             agentTypeIDLabel = new System.Windows.Forms.Label();
             directorNameLabel = new System.Windows.Forms.Label();
@@ -232,24 +232,6 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(242, 37);
             this.emailTextBox.TabIndex = 7;
-            // 
-            // iNNTextBox
-            // 
-            this.iNNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "INN", true));
-            this.iNNTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.iNNTextBox.Location = new System.Drawing.Point(265, 81);
-            this.iNNTextBox.Name = "iNNTextBox";
-            this.iNNTextBox.Size = new System.Drawing.Size(242, 37);
-            this.iNNTextBox.TabIndex = 1;
-            // 
-            // kPPTextBox
-            // 
-            this.kPPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "KPP", true));
-            this.kPPTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.kPPTextBox.Location = new System.Drawing.Point(265, 153);
-            this.kPPTextBox.Name = "kPPTextBox";
-            this.kPPTextBox.Size = new System.Drawing.Size(242, 37);
-            this.kPPTextBox.TabIndex = 3;
             // 
             // phoneMaskedTextBox
             // 
@@ -436,12 +418,34 @@
             this.logoPictureBox.TabIndex = 28;
             this.logoPictureBox.TabStop = false;
             // 
+            // iNNMaskedTextBox
+            // 
+            this.iNNMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "INN", true));
+            this.iNNMaskedTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.iNNMaskedTextBox.Location = new System.Drawing.Point(265, 78);
+            this.iNNMaskedTextBox.Mask = "0000000000";
+            this.iNNMaskedTextBox.Name = "iNNMaskedTextBox";
+            this.iNNMaskedTextBox.Size = new System.Drawing.Size(242, 37);
+            this.iNNMaskedTextBox.TabIndex = 29;
+            // 
+            // kPPMaskedTextBox
+            // 
+            this.kPPMaskedTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.agentBindingSource, "KPP", true));
+            this.kPPMaskedTextBox.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.kPPMaskedTextBox.Location = new System.Drawing.Point(265, 150);
+            this.kPPMaskedTextBox.Mask = "000000000";
+            this.kPPMaskedTextBox.Name = "kPPMaskedTextBox";
+            this.kPPMaskedTextBox.Size = new System.Drawing.Size(242, 37);
+            this.kPPMaskedTextBox.TabIndex = 30;
+            // 
             // AddEditAgentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1304, 615);
+            this.Controls.Add(this.kPPMaskedTextBox);
+            this.Controls.Add(this.iNNMaskedTextBox);
             this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.salesHistoryDGV);
             this.Controls.Add(this.addSaleBtn);
@@ -459,9 +463,7 @@
             this.Controls.Add(emailLabel);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(iNNLabel);
-            this.Controls.Add(this.iNNTextBox);
             this.Controls.Add(kPPLabel);
-            this.Controls.Add(this.kPPTextBox);
             this.Controls.Add(logoLabel);
             this.Controls.Add(phoneLabel);
             this.Controls.Add(this.phoneMaskedTextBox);
@@ -496,8 +498,6 @@
         private System.Windows.Forms.ComboBox agentTypeIDComboBox;
         private System.Windows.Forms.TextBox directorNameTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox iNNTextBox;
-        private System.Windows.Forms.TextBox kPPTextBox;
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
         private System.Windows.Forms.NumericUpDown priorityNumericUpDown;
         private System.Windows.Forms.TextBox titleTextBox;
@@ -515,5 +515,7 @@
         private System.Windows.Forms.Button deleteSaleBtn;
         private System.Windows.Forms.Button addSaleBtn;
         private System.Windows.Forms.PictureBox logoPictureBox;
+        private System.Windows.Forms.MaskedTextBox iNNMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox kPPMaskedTextBox;
     }
 }

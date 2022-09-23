@@ -86,9 +86,9 @@ namespace PoprizhenokApp.Views
             StringBuilder errors = new StringBuilder();
             if (String.IsNullOrWhiteSpace(titleTextBox.Text))
                 errors.AppendLine("Наименование");
-            if (String.IsNullOrWhiteSpace(iNNTextBox.Text))
+            if (iNNMaskedTextBox.Text.Length != 10)
                 errors.AppendLine("ИНН");
-            if (String.IsNullOrWhiteSpace(kPPTextBox.Text))
+            if (kPPMaskedTextBox.Text.Length != 9)
                 errors.AppendLine("КПП");
             if (String.IsNullOrWhiteSpace(emailTextBox.Text)
                 || !emailTextBox.Text.Contains("@"))
