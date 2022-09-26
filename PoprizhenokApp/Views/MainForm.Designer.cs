@@ -195,7 +195,7 @@
             this.addAgentBtn.Name = "addAgentBtn";
             this.addAgentBtn.Size = new System.Drawing.Size(300, 39);
             this.addAgentBtn.TabIndex = 4;
-            this.addAgentBtn.Text = "Добавить";
+            this.addAgentBtn.Text = "Добавить агента";
             this.addAgentBtn.UseVisualStyleBackColor = false;
             this.addAgentBtn.Click += new System.EventHandler(this.addAgentBtn_Click);
             // 

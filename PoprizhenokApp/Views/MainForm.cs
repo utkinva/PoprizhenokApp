@@ -19,6 +19,7 @@ namespace PoprizhenokApp
         List<Agent> agents = new List<Agent>();
         public static List<AgentCard> selectedAgents = new List<AgentCard>();
 
+
         public MainForm()
         {
             InitializeComponent();
