@@ -99,12 +99,7 @@ namespace PoprizhenokApp
                 selectedAgents.Remove(card);
             }
 
-            if (selectedAgents.Count > 1)
-                addAgentBtn.Visible = false;
-            else
-                addAgentBtn.Visible = true;
-
-            if (selectedAgents.Count >= 2)
+            if (selectedAgents.Count >= 1)
                 changePriorityBtn.Visible = true;
             else
                 changePriorityBtn.Visible = false;
