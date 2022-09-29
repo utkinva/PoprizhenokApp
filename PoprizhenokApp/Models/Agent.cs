@@ -65,27 +65,38 @@ namespace PoprizhenokApp.Models
                 }
 
                 if (salesSum <= 10000)
-                {
                     discount = 0;
-                }
                 else if (salesSum >= 10000 && salesSum <= 50000)
-                {
                     discount = 5;
-                }
                 else if (salesSum > 50000 && salesSum <= 150000)
-                {
                     discount = 10;
-                }
                 else if (salesSum > 150000 && salesSum <= 500000)
-                {
                     discount = 20;
-                }
                 else
-                {
                     discount = 25;
-                }
 
                 return discount;
+            }
+        }
+
+        public int SalesPerLastYear
+        {
+            get
+            {
+                int salesQtyLastYear = 0;
+
+                foreach (var sale in ProductSale)
+                {
+                    if (sale.SaleDate.Year == DateTime.Now.Year
+                        || (sale.SaleDate.Year == DateTime.Now.Year - 1
+                        && sale.SaleDate.Month <= DateTime.Now.Month
+                        && sale.SaleDate.Day <= DateTime.Now.Day))
+                    {
+                        salesQtyLastYear += sale.ProductCount;
+                    }
+                }
+
+                return salesQtyLastYear;
             }
         }
 

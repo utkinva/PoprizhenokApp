@@ -1,13 +1,7 @@
 ﻿using PoprizhenokApp.Models;
 using PoprizhenokApp.Utilities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PoprizhenokApp.Views
@@ -17,22 +11,25 @@ namespace PoprizhenokApp.Views
         public ChangePriorityForm()
         {
             InitializeComponent();
-
-            priorityNumericUpDown.Maximum = Int32.MaxValue;
         }
 
         private void ChangePriorityForm_Load(object sender, EventArgs e)
         {
+            priorityNumericUpDown.Maximum = Int32.MaxValue;
+            priorityNumericUpDown.Value = GetMaximumPriority();
+        }
+        /// <summary>
+        /// Метод для вычисления максимального значения приоритета среди выбранных карточек агентов
+        /// </summary>
+        /// <returns></returns>
+        private int GetMaximumPriority()
+        {
             int maxPriorityValue = 0;
 
             foreach (var agent in MainForm.selectedAgents)
-            {
-                if (int.Parse(agent.priorityValueLbl.Text) > maxPriorityValue)
-                {
-                    maxPriorityValue = int.Parse(agent.priorityValueLbl.Text);
-                }
-            }
-            priorityNumericUpDown.Value = maxPriorityValue;
+                maxPriorityValue = int.Parse(agent.priorityValueLbl.Text) > maxPriorityValue ? int.Parse(agent.priorityValueLbl.Text) : maxPriorityValue;
+
+            return maxPriorityValue;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -48,12 +45,12 @@ namespace PoprizhenokApp.Views
             try
             {
                 DBContext.Context.SaveChanges();
-                MessageBox.Show("Данные успешно сохранены.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Данные успешно сохранены.", "Сохранено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка\n" + ex.Message);
+                MessageBox.Show($"Ошибка\n{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

@@ -43,7 +43,7 @@
             // 
             this.titleTypeLbl.AutoSize = true;
             this.titleTypeLbl.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.titleTypeLbl.Location = new System.Drawing.Point(251, 16);
+            this.titleTypeLbl.Location = new System.Drawing.Point(236, 4);
             this.titleTypeLbl.Name = "titleTypeLbl";
             this.titleTypeLbl.Size = new System.Drawing.Size(300, 38);
             this.titleTypeLbl.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             this.salesPerYearLbl.AutoSize = true;
             this.salesPerYearLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.salesPerYearLbl.Location = new System.Drawing.Point(251, 63);
+            this.salesPerYearLbl.Location = new System.Drawing.Point(236, 51);
             this.salesPerYearLbl.Name = "salesPerYearLbl";
             this.salesPerYearLbl.Size = new System.Drawing.Size(209, 33);
             this.salesPerYearLbl.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             this.phoneLbl.AutoSize = true;
             this.phoneLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.phoneLbl.Location = new System.Drawing.Point(251, 96);
+            this.phoneLbl.Location = new System.Drawing.Point(236, 84);
             this.phoneLbl.Name = "phoneLbl";
             this.phoneLbl.Size = new System.Drawing.Size(169, 33);
             this.phoneLbl.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             this.priorityLbl.AutoSize = true;
             this.priorityLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.priorityLbl.Location = new System.Drawing.Point(251, 129);
+            this.priorityLbl.Location = new System.Drawing.Point(236, 117);
             this.priorityLbl.Name = "priorityLbl";
             this.priorityLbl.Size = new System.Drawing.Size(218, 33);
             this.priorityLbl.TabIndex = 1;
@@ -93,7 +93,7 @@
             // 
             this.agentIdLbl.AutoSize = true;
             this.agentIdLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.agentIdLbl.Location = new System.Drawing.Point(560, 117);
+            this.agentIdLbl.Location = new System.Drawing.Point(545, 117);
             this.agentIdLbl.Name = "agentIdLbl";
             this.agentIdLbl.Size = new System.Drawing.Size(0, 33);
             this.agentIdLbl.TabIndex = 1;
@@ -102,7 +102,7 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.picture;
-            this.logoPictureBox.Location = new System.Drawing.Point(18, 16);
+            this.logoPictureBox.Location = new System.Drawing.Point(3, 4);
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.Size = new System.Drawing.Size(227, 146);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -113,7 +113,7 @@
             // 
             this.priorityValueLbl.AutoSize = true;
             this.priorityValueLbl.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.priorityValueLbl.Location = new System.Drawing.Point(451, 129);
+            this.priorityValueLbl.Location = new System.Drawing.Point(436, 117);
             this.priorityValueLbl.Name = "priorityValueLbl";
             this.priorityValueLbl.Size = new System.Drawing.Size(41, 33);
             this.priorityValueLbl.TabIndex = 1;
@@ -121,8 +121,9 @@
             // 
             // AgentCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.agentIdLbl);
             this.Controls.Add(this.priorityValueLbl);
@@ -133,7 +134,7 @@
             this.Controls.Add(this.titleTypeLbl);
             this.Controls.Add(this.logoPictureBox);
             this.Name = "AgentCard";
-            this.Size = new System.Drawing.Size(1195, 189);
+            this.Size = new System.Drawing.Size(1195, 156);
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -18,31 +18,26 @@ namespace PoprizhenokApp.Views
         public AddNewSaleForm(Agent current)
         {
             InitializeComponent();
+
             agent = current;
 
             productCountNumericUpDown.Maximum = Int32.MaxValue;
+            saleDateDateTimePicker.Value = DateTime.Now;
         }
 
         private void AddNewSaleForm_Load(object sender, EventArgs e)
         {
             productBindingSource.DataSource = DBContext.Context.Product.ToList();
             productSaleBindingSource.AddNew();
-
-            saleDateDateTimePicker.Value = DateTime.Now;
-        }
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
             StringBuilder errors = new StringBuilder();
             if (productCountNumericUpDown.Value <= 0)
-                errors.AppendLine("Количество не должно быть меньше или равным нулю");
+                errors.AppendLine("Количество должно быть не равным нулю");
             if (saleDateDateTimePicker.Value > DateTime.Now)
-                errors.AppendLine($"Дата продажи может быть не позднее {DateTime.Now}");
+                errors.AppendLine($"Дата продажи может быть не позднее {DateTime.Now.ToShortDateString()}");
             if (productIDComboBox.SelectedItem == null)
                 errors.AppendLine($"Выберите продукт");
 
@@ -62,7 +57,6 @@ namespace PoprizhenokApp.Views
                 ProductCount = Convert.ToInt32(productCountNumericUpDown.Value),
             };
 
-
             try
             {
                 DBContext.Context.ProductSale.Add(sale);
@@ -75,6 +69,11 @@ namespace PoprizhenokApp.Views
                 MessageBox.Show("Ошибка\n" + ex.Message);
                 return;
             }
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

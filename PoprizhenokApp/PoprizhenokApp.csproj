@@ -128,7 +128,7 @@
     <EmbeddedResource Include="Views\PartialView\AgentCard.resx">
       <DependentUpon>AgentCard.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="Config\packages.config" />
     <None Include="Properties\DataSources\PoprizhenokApp.Models.Agent.datasource" />
     <None Include="Properties\DataSources\PoprizhenokApp.Models.AgentType.datasource" />
     <None Include="Properties\DataSources\PoprizhenokApp.Models.Product.datasource" />
@@ -144,7 +144,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Config\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\picture.png" />

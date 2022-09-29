@@ -1,4 +1,5 @@
 ﻿using PoprizhenokApp.Models;
+using PoprizhenokApp.Properties;
 using PoprizhenokApp.Utilities;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,9 @@ namespace PoprizhenokApp.Views
         {
             InitializeComponent();
 
-            if (current != null)
-            {
-                agent = current;
-            }
-            else
+            agent = current ?? null;
+
+            if (current == null)
             {
                 agent = new Agent()
                 {
@@ -35,41 +34,28 @@ namespace PoprizhenokApp.Views
             }
 
             priorityNumericUpDown.Maximum = Int32.MaxValue;
-
             agentTypeBindingSource.DataSource = DBContext.Context.AgentType.ToList();
         }
 
         private void AddEditAgentForm_Load(object sender, EventArgs e)
         {
-
             if (agent != null)
             {
-                if (agent.Logo == null)
-                {
-                    logoPictureBox.ImageLocation = @"..\..\Resources\picture.png";
-                }
-                else
-                {
+                if (agent.Logo != String.Empty)
                     logoPictureBox.ImageLocation = agent.Logo;
-                }
+                else
+                    logoPictureBox.ImageLocation = @"..\..\Resources\picture.png";
 
                 agentBindingSource.Add(agent);
-                productBindingSource.DataSource = DBContext.Context.Product.ToList();
 
-                GetSalesHistory();
+                productBindingSource.DataSource = DBContext.Context.Product.ToList();
+                productSaleBindingSource.DataSource = GetSalesHistory();
             }
             else
-            {
-
                 agentBindingSource.AddNew();
-            }
-
-
-
-
         }
 
-        private void GetSalesHistory()
+        private List<ProductSale> GetSalesHistory()
         {
             var sales = DBContext.Context.ProductSale.ToList();
 
@@ -77,12 +63,7 @@ namespace PoprizhenokApp.Views
                 .Where(x => x.AgentID == agent.ID)
                 .ToList();
 
-            productSaleBindingSource.DataSource = sales;
-        }
-
-        private void cancelBtn_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
+            return sales;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -95,18 +76,16 @@ namespace PoprizhenokApp.Views
             if (kPPMaskedTextBox.Text.Length != 9)
                 errors.AppendLine("КПП");
             if (String.IsNullOrWhiteSpace(emailTextBox.Text)
-                || !emailTextBox.Text.Contains("@"))
+                || (!emailTextBox.Text.Contains("@") && !emailTextBox.Text.Contains(".")))
                 errors.AppendLine("Email");
             if (phoneMaskedTextBox.Text.Length != 16)
                 errors.AppendLine("Номер телефона");
             if (String.IsNullOrWhiteSpace(directorNameTextBox.Text))
                 errors.AppendLine("ФИО Директора");
             if (priorityNumericUpDown.Value <= 0)
-                errors.AppendLine("Приоритет не должен быть меньше или равным нулю");
+                errors.AppendLine("Приоритет не должен быть равен нулю");
             if (agentTypeIDComboBox.SelectedItem == null)
                 errors.AppendLine("Тип агента");
-
-
 
             if (errors.Length > 0)
             {
@@ -114,9 +93,9 @@ namespace PoprizhenokApp.Views
                 return;
             }
 
-
             if (agent.ID == 0)
             {
+                agent.Logo = agent.Logo == @"..\..\Resources\picture.png" ? null : agent.Logo;
                 DBContext.Context.Agent.Add(agent);
             }
 
@@ -131,21 +110,15 @@ namespace PoprizhenokApp.Views
                 MessageBox.Show("Ошибка\n" + ex.Message);
                 return;
             }
-
-
         }
 
         /// <summary>
-        /// Change agent logo image
+        /// Метод вызова диалогового окна для выбора изображения логотипа агента
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void changeLogoBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "";
-            dialog.InitialDirectory = Environment.CurrentDirectory;
-            dialog.InitialDirectory += @"\agents\";
+            dialog.InitialDirectory = $@"{Environment.CurrentDirectory}\agents\";
 
             DialogResult dr = dialog.ShowDialog();
 
@@ -164,29 +137,17 @@ namespace PoprizhenokApp.Views
         {
             if (salesHistoryDGV.RowCount != 0)
             {
-                MessageBox.Show("Агент не может быть удален, потому что у него имеется история продаж",
-                                "Ошибка",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                MessageBox.Show("Агент не может быть удален, потому что у него имеется история продаж","Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("Удалить текущего агента?", 
-                "Удаление", 
-                MessageBoxButtons.YesNo, 
-                MessageBoxIcon.Warning);
-
+            DialogResult dr = MessageBox.Show("Удалить текущего агента?","Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(dr == DialogResult.Yes)
                 try
                 {
                     DBContext.Context.Agent.Remove(agent);
                     DBContext.Context.SaveChanges();
-
-                    MessageBox.Show("Агент удален.", 
-                        "Успешно", 
-                        MessageBoxButtons.OK, 
-                        MessageBoxIcon.Information);
-
+                    MessageBox.Show("Агент удален.", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                 }
                 catch (Exception ex)
@@ -199,11 +160,7 @@ namespace PoprizhenokApp.Views
         private void deleteSaleBtn_Click(object sender, EventArgs e)
         {
             ProductSale itemToDelete = (ProductSale)productSaleBindingSource.Current;
-
-            DialogResult dr = MessageBox.Show("Удалить выбранную запись?",
-                                            "Удаление",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Warning);
+            DialogResult dr = MessageBox.Show("Удалить выбранную запись?","Удаление",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
 
             if (dr == DialogResult.Yes)
                 try
@@ -211,11 +168,8 @@ namespace PoprizhenokApp.Views
                     DBContext.Context.ProductSale.Remove(itemToDelete);
                     DBContext.Context.SaveChanges();
 
-                    MessageBox.Show("Запись удалена.",
-                                    "Успешно",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-                    GetSalesHistory();
+                    MessageBox.Show("Запись удалена.","Успешно",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    productSaleBindingSource.DataSource = GetSalesHistory();
                 }
                 catch (Exception ex)
                 {
@@ -229,7 +183,12 @@ namespace PoprizhenokApp.Views
             AddNewSaleForm newSale = new AddNewSaleForm(agent);
             DialogResult dr = newSale.ShowDialog();
             if (dr == DialogResult.OK)
-                GetSalesHistory();
+                productSaleBindingSource.DataSource = GetSalesHistory();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

@@ -31,13 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.titleLbl = new System.Windows.Forms.Label();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.filterComboBox = new System.Windows.Forms.ComboBox();
             this.agentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ascDescCheck = new System.Windows.Forms.CheckBox();
             this.searchTxtBox = new System.Windows.Forms.TextBox();
             this.sortComboBox = new System.Windows.Forms.ComboBox();
-            this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.changePriorityBtn = new System.Windows.Forms.Button();
@@ -45,9 +46,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.agentsLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,13 +58,36 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(150)))), ((int)(((byte)(158)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.titleLbl);
             this.panel1.Controls.Add(this.logoPictureBox);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1220, 150);
             this.panel1.TabIndex = 0;
+            // 
+            // titleLbl
+            // 
+            this.titleLbl.AutoSize = true;
+            this.titleLbl.Font = new System.Drawing.Font("Comic Sans MS", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.titleLbl.Location = new System.Drawing.Point(145, 5);
+            this.titleLbl.Name = "titleLbl";
+            this.titleLbl.Size = new System.Drawing.Size(445, 90);
+            this.titleLbl.TabIndex = 3;
+            this.titleLbl.Text = "Попрыженок";
+            // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.Попрыженок;
+            this.logoPictureBox.Location = new System.Drawing.Point(-1, 5);
+            this.logoPictureBox.MaximumSize = new System.Drawing.Size(140, 140);
+            this.logoPictureBox.MinimumSize = new System.Drawing.Size(140, 140);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(140, 140);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logoPictureBox.TabIndex = 0;
+            this.logoPictureBox.TabStop = false;
             // 
             // panel4
             // 
@@ -72,9 +96,9 @@
             this.panel4.Controls.Add(this.searchTxtBox);
             this.panel4.Controls.Add(this.sortComboBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(152, 0);
+            this.panel4.Location = new System.Drawing.Point(145, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1066, 148);
+            this.panel4.Size = new System.Drawing.Size(1073, 148);
             this.panel4.TabIndex = 4;
             // 
             // filterComboBox
@@ -90,7 +114,7 @@
             this.filterComboBox.Size = new System.Drawing.Size(258, 37);
             this.filterComboBox.TabIndex = 2;
             this.filterComboBox.ValueMember = "ID";
-            this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.filterComboBox_SelectedIndexChanged);
+            this.filterComboBox.SelectedIndexChanged += new System.EventHandler(this.TriggerFilters);
             // 
             // agentTypeBindingSource
             // 
@@ -106,7 +130,7 @@
             this.ascDescCheck.TabIndex = 1;
             this.ascDescCheck.Text = "По убыванию";
             this.ascDescCheck.UseVisualStyleBackColor = true;
-            this.ascDescCheck.CheckedChanged += new System.EventHandler(this.ascDescCheck_CheckedChanged);
+            this.ascDescCheck.CheckedChanged += new System.EventHandler(this.TriggerFilters);
             // 
             // searchTxtBox
             // 
@@ -116,7 +140,7 @@
             this.searchTxtBox.Size = new System.Drawing.Size(350, 37);
             this.searchTxtBox.TabIndex = 3;
             this.searchTxtBox.Text = "Введите для поиска";
-            this.searchTxtBox.TextChanged += new System.EventHandler(this.searchTxtBox_TextChanged);
+            this.searchTxtBox.TextChanged += new System.EventHandler(this.TriggerFilters);
             this.searchTxtBox.Enter += new System.EventHandler(this.searchTxtBox_Enter);
             this.searchTxtBox.Leave += new System.EventHandler(this.searchTxtBox_Leave);
             // 
@@ -135,19 +159,7 @@
             this.sortComboBox.Name = "sortComboBox";
             this.sortComboBox.Size = new System.Drawing.Size(247, 37);
             this.sortComboBox.TabIndex = 0;
-            this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.sortComboBox_SelectedIndexChanged);
-            // 
-            // logoPictureBox
-            // 
-            this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.Попрыженок;
-            this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.logoPictureBox.MaximumSize = new System.Drawing.Size(140, 140);
-            this.logoPictureBox.MinimumSize = new System.Drawing.Size(140, 140);
-            this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(140, 140);
-            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoPictureBox.TabIndex = 0;
-            this.logoPictureBox.TabStop = false;
+            this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.TriggerFilters);
             // 
             // panel2
             // 
@@ -231,10 +243,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Попрыженок";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -258,6 +271,7 @@
         private System.Windows.Forms.Button changePriorityBtn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label titleLbl;
     }
 }
 

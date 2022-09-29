@@ -101,6 +101,7 @@
             this.productIDComboBox.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.productIDComboBox.FormattingEnabled = true;
             this.productIDComboBox.Location = new System.Drawing.Point(17, 110);
+            this.productIDComboBox.MaxDropDownItems = 10;
             this.productIDComboBox.Name = "productIDComboBox";
             this.productIDComboBox.Size = new System.Drawing.Size(470, 34);
             this.productIDComboBox.TabIndex = 4;

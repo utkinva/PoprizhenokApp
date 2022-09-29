@@ -408,8 +408,9 @@
             // logoPictureBox
             // 
             this.logoPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.agentBindingSource, "Logo", true));
-            this.logoPictureBox.ErrorImage = global::PoprizhenokApp.Properties.Resources.picture;
+            this.logoPictureBox.ErrorImage = null;
             this.logoPictureBox.Image = global::PoprizhenokApp.Properties.Resources.picture;
+            this.logoPictureBox.ImageLocation = "";
             this.logoPictureBox.InitialImage = global::PoprizhenokApp.Properties.Resources.picture;
             this.logoPictureBox.Location = new System.Drawing.Point(536, 66);
             this.logoPictureBox.Name = "logoPictureBox";
