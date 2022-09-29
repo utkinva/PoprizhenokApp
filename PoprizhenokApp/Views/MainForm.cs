@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PoprizhenokApp
 {
@@ -16,12 +17,13 @@ namespace PoprizhenokApp
         List<Agent> agents = DBContext.Context.Agent.ToList();
         List<AgentType> agentTypes = DBContext.Context.AgentType.ToList();
         public static List<AgentCard> selectedAgents = new List<AgentCard>();
-
+        int nPage = 0;
+        int nPageMax = 0;
         public MainForm()
         {
             InitializeComponent();
 
-            GenerateAgentCardList(agents);
+            ApplyFilters();
 
             agentTypes.Insert(0, new AgentType { Title = "Все типы" });
             filterComboBox.DataSource = agentTypes;
@@ -33,8 +35,15 @@ namespace PoprizhenokApp
         /// Генерация списка карточек агентов
         /// </summary>
         /// <param name="agents">Список агентов из таблицы</param>
-        private void GenerateAgentCardList(List<Agent> agents)
+        /// <param name="page">Номер текущей страницы</param>
+        /// <param name="pageSize">Количество элементов на одной странице</param>
+        private void GenerateAgentCardList(List<Agent> agents, int page, int pageSize)
         {
+            nPageMax = ((int)agents.Count / 10) < 1 ? 1 : ((int)agents.Count / 10);
+            agents = agents.Skip(page * pageSize).Take(pageSize).ToList();
+            pagesCountLbl.Text = $"{nPage + 1} из {nPageMax}";
+
+            agentsLayoutPanel.Controls.Clear();
             foreach (var agent in agents)
             {
                 AgentCard card = new AgentCard();
@@ -46,6 +55,26 @@ namespace PoprizhenokApp
                 card.DoubleClick += Card_DoubleClick;
             }
         }
+        #region События кнопок перемещения между страницами списка агентов
+
+        private void nextPageBtn_Click(object sender, EventArgs e)
+        {
+            if (nPage + 1 < nPageMax)
+            {
+                nPage++;
+                ApplyFilters();
+            }
+        }
+
+        private void prevPageBtn_Click(object sender, EventArgs e)
+        {
+            if (nPage > 0)
+            {
+                nPage--;
+                ApplyFilters();
+            }
+        }
+        #endregion
 
         #region События нажатий на карточку агента
         private void Card_DoubleClick(object sender, EventArgs e)
@@ -54,9 +83,9 @@ namespace PoprizhenokApp
 
             AddEditAgentForm edit = new AddEditAgentForm(DBContext.Context.Agent.First(x => x.ID.ToString() == card.agentIdLbl.Text));
             DialogResult dr = edit.ShowDialog();
-            if (dr == DialogResult.OK
-                || dr == DialogResult.Cancel)
+            if (dr == DialogResult.OK || dr == DialogResult.Cancel)
             {
+                nPage = 0;
                 ApplyFilters();
                 selectedAgents.Clear();
                 card.BackColor = Color.White;
@@ -78,7 +107,6 @@ namespace PoprizhenokApp
                 selectedAgents.Remove(card);
             }
 
-            changePriorityBtn.Visible = selectedAgents.Count >= 1 ? true : false;
         }
         #endregion
 
@@ -89,17 +117,24 @@ namespace PoprizhenokApp
             DialogResult dr = add.ShowDialog();
             if (dr == DialogResult.OK)
             {
+                nPage = 0;
                 ApplyFilters();
                 selectedAgents.Clear();
             }
-
         }
         private void changePriorityBtn_Click(object sender, EventArgs e)
         {
+            if (selectedAgents.Count == 0)
+            {
+                MessageBox.Show("Выберите хотя бы одного агента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+                
             ChangePriorityForm changePriority = new ChangePriorityForm();
             DialogResult dr = changePriority.ShowDialog();
             if (dr == DialogResult.OK)
             {
+                nPage = 0;
                 selectedAgents.Clear();
                 ApplyFilters();
             }
@@ -162,12 +197,17 @@ namespace PoprizhenokApp
                     .ToList();
             #endregion
             agentsLayoutPanel.Controls.Clear();
-            GenerateAgentCardList(updatedList);
+            GenerateAgentCardList(updatedList, nPage, 10);
         }
         /// <summary>
         /// Метод для вызова метода поискаб сортировки и фильтрации
         /// </summary>
-        private void TriggerFilters(object sender, EventArgs e) => ApplyFilters();
+        private void TriggerFilters(object sender, EventArgs e)
+        {
+            nPage = 0;
+            ApplyFilters();
+        }
+
         #endregion
 
         private void searchTxtBox_Leave(object sender, EventArgs e)
@@ -182,7 +222,7 @@ namespace PoprizhenokApp
         {
             if (searchTxtBox.Text == "Введите для поиска")
             {
-                searchTxtBox.Text = String.Empty;
+                searchTxtBox.Text = null;
                 searchTxtBox.ForeColor = Color.Black;
             }
         }

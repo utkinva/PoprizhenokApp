@@ -41,6 +41,10 @@
             this.sortComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pagesCountLbl = new System.Windows.Forms.Label();
+            this.pageNumLbl = new System.Windows.Forms.Label();
+            this.prevPageLbl = new System.Windows.Forms.Label();
             this.changePriorityBtn = new System.Windows.Forms.Button();
             this.addAgentBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -166,21 +170,67 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(150)))), ((int)(((byte)(158)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.changePriorityBtn);
             this.panel2.Controls.Add(this.addAgentBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 695);
+            this.panel2.Location = new System.Drawing.Point(0, 750);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1220, 52);
+            this.panel2.Size = new System.Drawing.Size(1220, 56);
             this.panel2.TabIndex = 1;
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.changePriorityBtn);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.pagesCountLbl);
+            this.panel5.Controls.Add(this.pageNumLbl);
+            this.panel5.Controls.Add(this.prevPageLbl);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(895, 0);
+            this.panel5.Location = new System.Drawing.Point(900, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(323, 50);
+            this.panel5.Size = new System.Drawing.Size(318, 54);
             this.panel5.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(286, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(21, 29);
+            this.label1.TabIndex = 3;
+            this.label1.Text = ">";
+            this.label1.Click += new System.EventHandler(this.nextPageBtn_Click);
+            // 
+            // pagesCountLbl
+            // 
+            this.pagesCountLbl.AutoSize = true;
+            this.pagesCountLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pagesCountLbl.Location = new System.Drawing.Point(7, 13);
+            this.pagesCountLbl.Name = "pagesCountLbl";
+            this.pagesCountLbl.Size = new System.Drawing.Size(119, 29);
+            this.pagesCountLbl.TabIndex = 3;
+            this.pagesCountLbl.Text = "## из ##";
+            // 
+            // pageNumLbl
+            // 
+            this.pageNumLbl.AutoSize = true;
+            this.pageNumLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pageNumLbl.Location = new System.Drawing.Point(201, 13);
+            this.pageNumLbl.Name = "pageNumLbl";
+            this.pageNumLbl.Size = new System.Drawing.Size(79, 29);
+            this.pageNumLbl.TabIndex = 3;
+            this.pageNumLbl.Text = "1 2 3 4";
+            // 
+            // prevPageLbl
+            // 
+            this.prevPageLbl.AutoSize = true;
+            this.prevPageLbl.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.prevPageLbl.Location = new System.Drawing.Point(174, 13);
+            this.prevPageLbl.Name = "prevPageLbl";
+            this.prevPageLbl.Size = new System.Drawing.Size(21, 29);
+            this.prevPageLbl.TabIndex = 3;
+            this.prevPageLbl.Text = "<";
+            this.prevPageLbl.Click += new System.EventHandler(this.prevPageBtn_Click);
             // 
             // changePriorityBtn
             // 
@@ -188,13 +238,12 @@
             this.changePriorityBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changePriorityBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.changePriorityBtn.ForeColor = System.Drawing.Color.Black;
-            this.changePriorityBtn.Location = new System.Drawing.Point(12, 8);
+            this.changePriorityBtn.Location = new System.Drawing.Point(315, 8);
             this.changePriorityBtn.Name = "changePriorityBtn";
             this.changePriorityBtn.Size = new System.Drawing.Size(300, 39);
             this.changePriorityBtn.TabIndex = 5;
             this.changePriorityBtn.Text = "Изменить приоритет на...";
             this.changePriorityBtn.UseVisualStyleBackColor = false;
-            this.changePriorityBtn.Visible = false;
             this.changePriorityBtn.Click += new System.EventHandler(this.changePriorityBtn_Click);
             // 
             // addAgentBtn
@@ -203,7 +252,7 @@
             this.addAgentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addAgentBtn.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.addAgentBtn.ForeColor = System.Drawing.Color.Black;
-            this.addAgentBtn.Location = new System.Drawing.Point(11, 5);
+            this.addAgentBtn.Location = new System.Drawing.Point(9, 8);
             this.addAgentBtn.Name = "addAgentBtn";
             this.addAgentBtn.Size = new System.Drawing.Size(300, 39);
             this.addAgentBtn.TabIndex = 4;
@@ -217,7 +266,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 150);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1220, 545);
+            this.panel3.Size = new System.Drawing.Size(1220, 600);
             this.panel3.TabIndex = 2;
             // 
             // agentsLayoutPanel
@@ -226,7 +275,7 @@
             this.agentsLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.agentsLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.agentsLayoutPanel.Name = "agentsLayoutPanel";
-            this.agentsLayoutPanel.Size = new System.Drawing.Size(1220, 545);
+            this.agentsLayoutPanel.Size = new System.Drawing.Size(1220, 600);
             this.agentsLayoutPanel.TabIndex = 0;
             // 
             // MainForm
@@ -234,7 +283,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1220, 747);
+            this.ClientSize = new System.Drawing.Size(1220, 806);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -250,6 +299,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.agentTypeBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -272,6 +322,10 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label titleLbl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label pageNumLbl;
+        private System.Windows.Forms.Label prevPageLbl;
+        private System.Windows.Forms.Label pagesCountLbl;
     }
 }
 
