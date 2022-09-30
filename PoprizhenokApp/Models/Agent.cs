@@ -89,8 +89,7 @@ namespace PoprizhenokApp.Models
                 {
                     if (sale.SaleDate.Year == DateTime.Now.Year
                         || (sale.SaleDate.Year == DateTime.Now.Year - 1
-                        && sale.SaleDate.Month <= DateTime.Now.Month
-                        && sale.SaleDate.Day <= DateTime.Now.Day))
+                        && sale.SaleDate.Month <= DateTime.Now.Month))
                     {
                         salesQtyLastYear += sale.ProductCount;
                     }
